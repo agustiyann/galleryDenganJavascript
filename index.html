@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gallery javascript</title>
+	<style>
+		body{text-align: center;}
+		img{
+			
+			border: 2px solid grey;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Gallery.js</h1>
+
+	<img src="img/1.png" id="image">
+	<br>
+	<div id="caption">gambar1</div>
+	<br>
+
+	<a href="#" onclick="prev()">Prev</a>
+	<a href="#" onclick="ganti(0)">1</a>
+	<a href="#" onclick="ganti(1)">2</a>
+	<a href="#" onclick="ganti(2)">3</a>
+	<a href="#" onclick="ganti(3)">4</a>
+	<a href="#" onclick="ganti(4)">5</a>
+	<a href="#" onclick="next()">Next</a>
+	
+<script>
+	var nomor = 0;
+	var caption = document.getElementById('caption');
+	var text = ['gambar1', 'gambar2', 'gambar3', 'gambar4', 'gambar5'];
+
+	function ganti(number){
+		nomor = number;
+		const location = 'img/' + number + '.png';
+		document.querySelector('#image').src = location;
+		caption.innerHTML = text[number];
+		return false;
+	}
+
+	function prev(){
+		nomor = nomor - 1;
+
+		if (nomor < 0) {
+			nomor = 4;
+		}
+		var location = 'img/' + nomor + '.png';
+		document.querySelector('#image').src = location;
+		caption.innerHTML = text[nomor];
+		return false;
+	}
+
+	function next(){
+		nomor = nomor + 1;
+
+		if (nomor > 4) {
+			nomor = 0;
+		}
+		var location = 'img/' + nomor + '.png';
+		document.querySelector('#image').src = location;
+		caption.innerHTML = text[nomor];
+		return false;
+	}
+</script>
+</body>
+</html>
